@@ -24,8 +24,14 @@ function App() {
         console.error(e.message);
       }
     }
-    startFetching();
+
+    const interval = setInterval(() => {
+      startFetching(5000);
+    });
+    return () => clearInterval(interval);
+    // startFetching();
   }, []);
+
   let isGoodWeather = weather?.isGoodWeather;
   let temperature = weather?.temperature;
   let weatherIcon = weather?.condition;
