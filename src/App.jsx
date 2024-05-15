@@ -5,12 +5,14 @@ import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import List from "./components/List";
 import { WeatherDisplay } from "./components/WeatherDisplay";
+import SelectLocation from "./components/SelectLocation";
 
 function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
   const [weather, setWeather] = useState();
+  const [location, setLocation] = useState();
 
   useEffect(() => {
     async function startFetching() {
@@ -52,6 +54,12 @@ function App() {
         weatherIcon={weatherIcon}
         temperature={temperature}
         isGoodWeather={isGoodWeather}
+      />
+
+      <SelectLocation
+        onChange={(e) => {
+          (e) => setLocation(e.target.value);
+        }}
       />
       <List
         activities={activities}
