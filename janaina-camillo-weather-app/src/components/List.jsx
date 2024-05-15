@@ -1,10 +1,10 @@
-export default function List({ activities, prop, onDeleteActivity }) {
+export default function List({ activities, weatherStatus, onDeleteActivity }) {
   console.log("activities,", activities);
 
   return (
     <ul>
       {activities.map((activity) => {
-        if (activity.isForGoodWeather === prop) {
+        if (activity.isForGoodWeather === weatherStatus) {
           return (
             <li key={activity.id} id={activity.id}>
               {activity.name}{" "}

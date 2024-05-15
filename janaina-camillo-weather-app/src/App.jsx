@@ -39,13 +39,6 @@ function App() {
       activities.filter((activity) => activity.id != idNewActivity)
     );
   }
-  // <button onClick={() => onDeleteActivity(id)}>x</button>
-
-  // const filteredActivites = activities.filter(
-  //   (activity) => activity.isForGoodWeather === isGoodWeather
-  // );
-
-  console.log(activities);
 
   return (
     <>
@@ -56,7 +49,7 @@ function App() {
       />
       <List
         activities={activities}
-        prop={isGoodWeather}
+        weatherStatus={isGoodWeather}
         onDeleteActivity={handleDeleteActivity}
       />
 

@@ -1,8 +1,6 @@
 export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
     event.preventDefault();
-    // const formData = new FormData(event.target);
-    // const data = Object.fromEntries(formData);
 
     let data = {
       name: event.target.elements.name.value,
@@ -10,7 +8,6 @@ export default function Form({ onAddActivity }) {
     };
 
     onAddActivity(data);
-    console.log(data);
 
     event.target.reset();
     event.target.elements.name.focus();
