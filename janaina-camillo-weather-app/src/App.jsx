@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import List from "./components/List";
+import { WeatherDisplay } from "./components/WeatherDisplay";
 
 function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
@@ -25,12 +26,20 @@ function App() {
     }
     startFetching();
   }, []);
-  console.log(weather);
-  let isGoodWeather = weather.isGoodWeather;
+  let isGoodWeather = weather?.isGoodWeather;
+  let temperature = weather?.temperature;
+  let weatherIcon = weather?.condition;
 
   function handleAddActivity(newActivity) {
     setActivities([...activities, { id: uid(), ...newActivity }]);
   }
+
+  function handleDeleteActivity(idNewActivity) {
+    setActivities(
+      activities.filter((activity) => activity.id != idNewActivity)
+    );
+  }
+  // <button onClick={() => onDeleteActivity(id)}>x</button>
 
   // const filteredActivites = activities.filter(
   //   (activity) => activity.isForGoodWeather === isGoodWeather
@@ -40,7 +49,16 @@ function App() {
 
   return (
     <>
-      <List activities={activities} prop={isGoodWeather} />
+      <WeatherDisplay
+        weatherIcon={weatherIcon}
+        temperature={temperature}
+        isGoodWeather={isGoodWeather}
+      />
+      <List
+        activities={activities}
+        prop={isGoodWeather}
+        onDeleteActivity={handleDeleteActivity}
+      />
 
       <Form onAddActivity={handleAddActivity} />
     </>
