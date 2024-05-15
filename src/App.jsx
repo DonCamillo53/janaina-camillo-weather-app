@@ -12,13 +12,13 @@ function App() {
     defaultValue: [],
   });
   const [weather, setWeather] = useState();
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState("arctic");
 
   useEffect(() => {
     async function startFetching() {
       try {
         const response = await fetch(
-          `https://example-apis.vercel.app/api/weather`
+          `https://example-apis.vercel.app/api/weather/${location}`
         );
         const weather = await response.json();
         setWeather(weather);
@@ -32,7 +32,7 @@ function App() {
     });
     return () => clearInterval(interval);
     // startFetching();
-  }, []);
+  }, [location]);
 
   let isGoodWeather = weather?.isGoodWeather;
   let temperature = weather?.temperature;
@@ -58,7 +58,7 @@ function App() {
 
       <SelectLocation
         onChange={(e) => {
-          (e) => setLocation(e.target.value);
+          setLocation(e.target.value);
         }}
       />
       <List
