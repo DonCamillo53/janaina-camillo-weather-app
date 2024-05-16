@@ -17,7 +17,13 @@ export default function Form({ onAddActivity }) {
       <h2>Add a new Activity</h2>
       <div>
         <label htmlFor="activity_input">Name</label>
-        <input type="text" id="activity_input" name="name" />
+        <input
+          type="text"
+          id="activity_input"
+          name="name"
+          maxLength={30}
+          required
+        />
       </div>
       <div>
         <label htmlFor="activity_checkbox">Good-Weather Activity</label>
