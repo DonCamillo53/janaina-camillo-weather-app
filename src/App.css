@@ -10,8 +10,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aquamarine;
+  background-color: #4bcffa;
   width: 100vw;
+  min-height: 100vh;
   height: 100%;
 }
 
@@ -20,10 +21,11 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
+  width: 90vw;
+  min-height: 90vh;
   background-color: white;
-  gap: 1rem;
   border-radius: 3rem;
-  margin: 5rem auto;
   box-shadow: 1px 5px 9px rgba(0, 0, 0, 0.1);
 }
 
@@ -63,9 +65,9 @@ main {
 
 ul {
   list-style: none;
-  margin: 4rem 2rem 3rem;
   overflow: scroll;
   height: 70vh;
+  width: 45vw;
 }
 li {
   display: flex;
