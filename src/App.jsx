@@ -27,11 +27,12 @@ function App() {
       }
     }
 
+    startFetching();
+
     const interval = setInterval(() => {
-      startFetching(5000);
-    });
+      startFetching();
+    }, 5000);
     return () => clearInterval(interval);
-    // startFetching();
   }, [location]);
 
   let isGoodWeather = weather?.isGoodWeather;
@@ -39,7 +40,18 @@ function App() {
   let weatherIcon = weather?.condition;
 
   function handleAddActivity(newActivity) {
-    setActivities([...activities, { id: uid(), ...newActivity }]);
+    setActivities(
+      [...activities, { id: uid(), ...newActivity }].sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (a.name < b.name) {
+          return -1;
+        }
+
+        return 0;
+      })
+    );
   }
 
   function handleDeleteActivity(idNewActivity) {

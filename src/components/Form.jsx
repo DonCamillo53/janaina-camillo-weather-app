@@ -5,6 +5,7 @@ export default function Form({ onAddActivity }) {
     let data = {
       name: event.target.elements.name.value,
       isForGoodWeather: event.target.elements.isForGoodWeather.checked,
+      category: event.target.elements.category.value,
     };
 
     onAddActivity(data);
@@ -21,6 +22,7 @@ export default function Form({ onAddActivity }) {
           type="text"
           id="activity_input"
           name="name"
+
           maxLength={30}
           required
         />
@@ -28,6 +30,18 @@ export default function Form({ onAddActivity }) {
       <div>
         <label htmlFor="activity_checkbox">Good-Weather Activity</label>
         <input type="checkbox" id="activity_checkbox" name="isForGoodWeather" />
+      </div>
+      <div>
+        <label htmlFor="select-location">Category</label>
+        <select name="category" id="select-location">
+          <option value="arts_and_crafts">Arts and Crafts</option>
+          <option value="cooking_and_baking">Cooking and Baking</option>
+          <option value="educational">Educational</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="fitness_and_wellness">Fitness and Wellness</option>
+          <option value="sports">Sports</option>
+          <option value="outdoor_activities">Outdoor Activities</option>
+        </select>
       </div>
       <button type="submit">submit</button>
     </form>
