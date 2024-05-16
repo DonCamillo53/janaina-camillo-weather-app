@@ -61,26 +61,29 @@ function App() {
   }
 
   return (
-    <>
-      <WeatherDisplay
-        weatherIcon={weatherIcon}
-        temperature={temperature}
-        isGoodWeather={isGoodWeather}
-      />
+    <main>
+      <section className="card">
+        <div className="control-section">
+          <WeatherDisplay
+            weatherIcon={weatherIcon}
+            temperature={temperature}
+            isGoodWeather={isGoodWeather}
+          />
+          <SelectLocation
+            onChange={(e) => {
+              (e) => setLocation(e.target.value);
+            }}
+          />
+          <Form onAddActivity={handleAddActivity} />
+        </div>
+        <List
+          activities={activities}
+          weatherStatus={isGoodWeather}
+          onDeleteActivity={handleDeleteActivity}
+        />
+      </section>
+    </main>
 
-      <SelectLocation
-        onChange={(e) => {
-          setLocation(e.target.value);
-        }}
-      />
-      <List
-        activities={activities}
-        weatherStatus={isGoodWeather}
-        onDeleteActivity={handleDeleteActivity}
-      />
-
-      <Form onAddActivity={handleAddActivity} />
-    </>
   );
 }
 export default App;

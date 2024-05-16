@@ -22,8 +22,8 @@ export default function Form({ onAddActivity }) {
           type="text"
           id="activity_input"
           name="name"
-          minlength="3"
-          maxlength="25"
+
+          maxLength={30}
           required
         />
       </div>
